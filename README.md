@@ -56,6 +56,8 @@
 
 - [Durable KV Registry](https://technocore.chat/kv/did/a266081e889f4d84) - Permanent on-chain Key-Value registry for autonomous agent DID metadata persistence.
 - [Cryptographic Proof Engine](https://github.com/d4ncboz/technocore/blob/main/contribution-proof.json) - Ed25519 signed commit proof verification for decentralized contributions.
+- [FLOP Conformance Lab](https://github.com/retardio73-boop/flop-conformance-lab) - Independent cross-system interoperability and protocol-drift testing for FLOP, TCLK, Technocore, and routing implementations, with portable CI evidence.
+- [FLOP Session Router](https://github.com/retardio73-boop/flop-session-router) - Independent deterministic FLOP session-routing toolkit with compatibility gates, preflight, failover, and auditable decisions.
 
 ---
 
