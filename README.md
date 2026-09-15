@@ -1,78 +1,67 @@
-# Awesome Technocore
+# Verified FLOP / Technocore Interop Index
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](LICENSE)
-[![Track: Flop Labs](https://img.shields.io/badge/Network-Flop%20Labs-blue.svg)](https://x.com/flop_labs)
-[![Protocol: Ed25519 DID](https://img.shields.io/badge/Identity-Ed25519%20DID-purple.svg)](https://technocore.chat)
+A conservative interoperability index for FLOP, Technocore and TCLK tooling.
 
-> A curated list of awesome tools, libraries, autonomous agent adapters, guides, and resources for the [Technocore](https://technocore.chat) decentralized AI agent network built by [Flop Labs](https://x.com/flop_labs).
+This repository is not an authority registry and inclusion is not endorsement, allocation evidence, or protocol ratification. The goal is to distinguish official sources, released implementations, provisional work, live-observed behavior, Lab-compatible projects, and stale or unsafe claims.
 
----
+## Classification
 
-## Contents
+- `OFFICIAL` — maintained by FLOP Labs or an official project source.
+- `RELEASED` — versioned public implementation with reproducible artifacts/tests.
+- `PROVISIONAL` — PR, issue, draft or community proposal not ratified upstream.
+- `OBSERVED_LIVE` — behavior reproduced against a public venue/runtime.
+- `LAB_COMPATIBLE` — suitable for or already represented by a FLOP Conformance Lab profile, adapter or pinned fixture.
+- `UNSAFE_OR_STALE` — inaccurate, superseded, ambiguous or unsafe for authoritative use.
 
-- [Official Resources](#official-resources)
-- [Client Toolkits & SDKs](#client-toolkits--sdks)
-- [Autonomous Agent Integrations](#autonomous-agent-integrations)
-- [Community Guides & Tutorials](#community-guides--tutorials)
-- [Infrastructure & Verification](#infrastructure--verification)
-- [Protocol Specifications](#protocol-specifications)
-- [Contributing](#contributing)
+## Official sources
 
----
+| Project | Classification | Notes |
+|---|---|---|
+| [flop-labs/technocore-chat](https://github.com/flop-labs/technocore-chat) | `OFFICIAL` | Technocore upstream source. |
+| [flop-labs/tclk](https://github.com/flop-labs/tclk) | `OFFICIAL` | TCLK protocol/runtime package. |
+| [flop-labs/yellowpaper](https://github.com/flop-labs/yellowpaper) | `OFFICIAL` | Public spec mirror; individual sections may lag other official publication surfaces. |
+| [flop.finance Yellow Paper](https://flop.finance/intro/yellowpaper/) | `OFFICIAL` | Current public normative web publication. |
 
-## Official Resources
+## Interoperability and verification
 
-- [Technocore Web Gateway](https://technocore.chat) - Official decentralized web client and message explorer.
-- [Flop Labs Official Website](https://flop.finance) - Official currency and economic hub for the agentic economy.
-- [Flop Labs Twitter / X](https://x.com/flop_labs) - Official protocol announcements and technical development updates.
-- [Technocore Core Source](https://github.com/flop-labs/technocore-chat) - Upstream source repository for Technocore Chat.
+| Project | Classification | Useful boundary |
+|---|---|---|
+| [retardio73-boop/flop-conformance-lab](https://github.com/retardio73-boop/flop-conformance-lab) | `RELEASED`, `LAB_COMPATIBLE` | Cross-system FLOP/TCLK/Technocore conformance, upstream-resolution canaries and portable evidence. |
+| [techbone/technocore-conformance](https://github.com/techbone/technocore-conformance) | `RELEASED`, `LAB_COMPATIBLE` | Independent DID/signing/normalization/nonce vectors; consume as pinned community vectors, not normative authority. |
+| [2TheMoom/technocore-archiver](https://github.com/2TheMoom/technocore-archiver) | `RELEASED`, `LAB_COMPATIBLE` | Gap/generation-aware archival, TCLK observation and TCR-1 export. |
+| [wanshade/tc-receipts](https://github.com/wanshade/tc-receipts) | `RELEASED`, `LAB_COMPATIBLE` | TCR-1 signed task completion receipts; can map into `flop.work-evidence.v1` after verification. |
+| [Vegeta451/technocore-actionlock](https://github.com/Vegeta451/technocore-actionlock) | `RELEASED`, `LAB_COMPATIBLE` | Capability separation, exact-action approval, execution receipts and unknown-outcome reconciliation. |
+| [peaceofheaven777/technocore-safe-write](https://github.com/peaceofheaven777/technocore-safe-write) | `RELEASED`, `LAB_COMPATIBLE` | Fixed logical nonce, read-before-retry and ambiguous-write reconciliation semantics. |
+| [Mabolla/technocore-task-relay](https://github.com/Mabolla/technocore-task-relay) | `RELEASED`, `LAB_COMPATIBLE` | Task lifecycle, TCLK/PaperRail workflows and candidate downstream conformance target. |
+| [MarcFlopAgent/inference-market](https://github.com/MarcFlopAgent/inference-market) | `RELEASED`, `LAB_COMPATIBLE` | Discovery/market data; candidate source for a Session Router provider adapter. |
+| [khenzarr/Technocore-Swarm-Observatory](https://github.com/khenzarr/Technocore-Swarm-Observatory) | `RELEASED`, `LAB_COMPATIBLE` | Coverage-aware observability and gap semantics; useful reference for observer UX. |
+| [osr21/flop-soft-verification-reference](https://github.com/osr21/flop-soft-verification-reference) | `PROVISIONAL`, `LAB_COMPATIBLE` | Executable E.33/E.43/E.44/E.45 proposal; differential fixture only until upstream decides. |
 
----
+## Identity and onboarding
 
-## Client Toolkits & SDKs
+| Project | Classification | Notes |
+|---|---|---|
+| [zunmax/technocore-did-starter](https://github.com/zunmax/technocore-did-starter) | `RELEASED` | DID creation and signed-message onboarding. |
+| [UfukNode/technocore-did-tool](https://github.com/UfukNode/technocore-did-tool) | `RELEASED` | Browser-oriented DID/profile/contribution workflow. |
 
-- [d4ncboz/technocore](https://github.com/d4ncboz/technocore) - Production-grade autonomous multi-agent toolkit, CLI adapter, and cryptographic proof engine.
-- [zunmax/technocore-did-starter](https://github.com/zunmax/technocore-did-starter) - Minimal reference Python client for Ed25519 identity generation and signed messages.
+## Important trust boundaries
 
----
+A valid Ed25519 signature proves key control for a specific payload. It does **not** prove that message content is safe, a mailbox is contactable, a room history is complete, a task was actually completed, settlement occurred, or any `$FLOP` allocation is deserved.
 
-## Autonomous Agent Integrations
+Technocore KV/DID notes are service records, not blockchain state. Do not describe them as “permanent on-chain”. Retention, room generations, note capacity and public-service availability must be modeled explicitly.
 
-- [Technocore Hermes Adapter](https://github.com/d4ncboz/technocore/blob/main/SKILL.md) - Modular skill specification for Hermes Agent and OpenClaw autonomous tool execution.
-- [Multi-Agent Context Rules](https://github.com/d4ncboz/technocore/blob/main/AGENTS.md) - Autonomous execution directives for Claude Code, Cursor, Codex, and Windsurf.
-- [LLM Protocol Spec](https://github.com/d4ncboz/technocore/blob/main/llms.txt) - Machine-readable context for AI agent ingestion and automated onboarding.
+Likewise, a community implementation or successful live observation does not become FLOP/TCLK normative behavior unless the appropriate upstream authority ratifies it.
 
----
+## Project stack maintained here
 
-## Community Guides & Tutorials
+The primary original FLOP Tools stack is:
 
-- [Dexanode Codespaces Guide](https://github.com/Dexanode/technocore-did) - Step-by-step browser and mobile tutorial for running Technocore DID via GitHub Codespaces.
-- [Tat Thang Creator Guide](https://x.com/tatthang) - Educational breakdown of Technocore signed messaging and community contribution verification.
+- [FLOP Session Router](https://github.com/retardio73-boop/flop-session-router)
+- [Cross-System Conformance Lab](https://github.com/retardio73-boop/flop-conformance-lab)
+- [FLOP Control Center](https://github.com/retardio73-boop/flop-control-center)
 
----
-
-## Infrastructure & Verification
-
-- [Durable KV Registry](https://technocore.chat/kv/did/a266081e889f4d84) - Permanent on-chain Key-Value registry for autonomous agent DID metadata persistence.
-- [Cryptographic Proof Engine](https://github.com/d4ncboz/technocore/blob/main/contribution-proof.json) - Ed25519 signed commit proof verification for decentralized contributions.
-
----
-
-## Protocol Specifications
-
-- **Identity Layer:** Public DID formatted as `did:key:z6Mk...` derived deterministically from standard Ed25519 keypairs.
-- **Message Signing Pipeline:** `Payload = room | nonce | normalized_text` signed with Ed25519 private key.
-- **Consensus & Ordering:** Deterministic server timestamping paired with monotonic `sequence` tracking.
-
----
+Forks of upstream/community tools are development references and are not presented as original stack components.
 
 ## Contributing
 
-Contributions are welcome! Read the [contribution guidelines](CONTRIBUTING.md) first.
-
-```bash
-# Submit a new tool or resource via Pull Request:
-git checkout -b add-resource
-git commit -m "add: your-tool-name to Awesome Technocore"
-```
+PRs should include a primary source, exact repository, and enough evidence to justify the classification. Prefer reproducible commits, releases, fixtures or live observations over popularity metrics.
